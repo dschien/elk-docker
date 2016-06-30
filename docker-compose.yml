@@ -13,3 +13,11 @@ elk:
     - "9200:9200"
     - "5044:5044"
     - "5000:5000"
+  
+filebeat:
+  build: filebeat
+  volumes:
+    - $JSON_LOGFILES_DIR:/mnt/ep_logs
+  links:
+    - elk
+  command: start.sh

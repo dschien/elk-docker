@@ -1,28 +1,16 @@
-# Elasticsearch, Logstash, Kibana (ELK) Docker image
+# Elasticsearch, Logstash, Kibana (ELK) Docker image - with Filebeat
 
-[![](https://badge.imagelayers.io/sebp/elk:latest.svg)](https://imagelayers.io/?images=sebp/elk:latest 'Get your own badge on imagelayers.io')
+# Deploy
 
-This Docker image provides a convenient centralised log server and log management web interface, by packaging Elasticsearch, Logstash, and Kibana, collectively known as ELK.
+`docker-compose up`
 
-The following tags are available:
+# Filebeat config
+set env variable JSON_LOGFILES_DIR
+## install template
+`curl -XPUT 'http://elk:9200/_template/filebeat?pretty' -d@/etc/filebeat/filebeat.template.json`
 
-- `es233_l232_k451`, `latest`: Elasticsearch 2.3.3, Logstash 2.3.2, and Kibana 4.5.1.
+*Note*: SSL is deactivated
 
-- `es232_l232_k450`: Elasticsearch 2.3.2, Logstash 2.3.2, and Kibana 4.5.0.
-
-- `es231_l231_k450`: Elasticsearch 2.3.1, Logstash 2.3.1, and Kibana 4.5.0.
- 
-- `es230_l230_k450`: Elasticsearch 2.3.0, Logstash 2.3.0, and Kibana 4.5.0.
-
-- `es221_l222_k442`: Elasticsearch 2.2.1, Logstash 2.2.2, and Kibana 4.4.2.
-
-- `es220_l222_k441`: Elasticsearch 2.2.0, Logstash 2.2.2, and Kibana 4.4.1.
-
-- `es220_l220_k440`: Elasticsearch 2.2.0, Logstash 2.2.0, and Kibana 4.4.0.
-
-- `E1L1K4`: Elasticsearch 1.7.3, Logstash 1.5.5, and Kibana 4.1.2.
-
-**Note** – See the documentation page for more information on pulling specific combinations of versions of Elasticsearch, Logstash and Kibana.
 
 ### Documentation
 
