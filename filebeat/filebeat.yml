@@ -16,6 +16,13 @@ filebeat:
       # * log: Reads every line of the log file (default)
       # * stdin: Reads the standard in
       type: log
+      json:
+        message_key: message
+        overwrite_keys: true
+
+      # By default, the decoded JSON is placed under a "json" key in the output document. If you enable this setting, the keys are copied top level in the output document. The default is false.
+#        keys_under_root: true
+        add_error_key: true
 
       # Optional additional fields. These field can be freely picked
       # to add additional information to the crawled log files for filtering
@@ -30,7 +37,7 @@ filebeat:
       # Scan frequency in seconds.
       # How often these files should be checked for changes. In case it is set
       # to 0s, it is done as often as possible. Default: 10s
-      scan_frequency: 0s
+      scan_frequency: 5s
       document_type: json
       # Defines the buffer size every harvester uses when fetching the file
       #harvester_buffer_size: 16384
@@ -92,7 +99,20 @@ output:
 
       # Configure curve types for ECDHE based cipher suites
       #curve_types: []
-
+#  elasticsearch:
+#    hosts: ["elk:9200"]
+#
+#    # A template is used to set the mapping in Elasticsearch
+#    # By default template loading is disabled and no template is loaded.
+#    # These settings can be adjusted to load your own template or overwrite existing ones
+#    template:
+#
+#      # Template name. By default the template name is filebeat.
+#      #name: "filebeat"
+#
+#      # Path to template file
+#      path: "/etc/filebeat/filebeat.template.json"
+#      overwrite: true
 ############################# Shipper #########################################
 
 shipper:

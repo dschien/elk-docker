@@ -20,4 +20,4 @@ filebeat:
     - $JSON_LOGFILES_DIR:/mnt/ep_logs
   links:
     - elk
-  command: start.sh
+  # command: start.sh
